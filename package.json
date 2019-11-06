@@ -1,6 +1,8 @@
 {
   "name": "react-electron-starter",
   "version": "0.1.0",
+  "main": "public/main.js",
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "react": "^16.11.0",
@@ -11,7 +13,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "./node_modules/.bin/electron-builder install-app-deps",
+    "preelectron-pack": "yarn build",
+    "electron-pack": "./node_modules/.bin/electron-builder -mw"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -31,5 +36,25 @@
   "devDependencies": {
     "electron": "^7.1.0",
     "electron-builder": "^22.1.0"
+  },
+  "author": {
+    "name": "khuynh",
+    "email": "myemail@domain.com",
+    "url": "https://domain.com"
+  },
+  "build": {
+    "appId": "your-app-id",
+    "productName": "MyApp",
+    "copyright": "Copyright © 2019 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }

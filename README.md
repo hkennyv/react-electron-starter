@@ -66,3 +66,21 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+### TODO: Building for Windows (on Mac OS)
+You can build a windows executable using Docker if you can't build it on your machine.
+
+```
+docker run --rm -ti \
+ --env-file <(env | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|TRAVIS_TAG|TRAVIS|TRAVIS_REPO_|TRAVIS_BUILD_|TRAVIS_BRANCH|TRAVIS_PULL_REQUEST_|APPVEYOR_|CSC_|GH_|GITHUB_|BT_|AWS_|STRIP|BUILD_') \
+ --env ELECTRON_CACHE="/root/.cache/electron" \
+ --env ELECTRON_BUILDER_CACHE="/root/.cache/electron-builder" \
+ -v ${PWD}:/project \
+ -v ${PWD##*/}-node-modules:/project/node_modules \
+ -v ~/.cache/electron:/root/.cache/electron \
+ -v ~/.cache/electron-builder:/root/.cache/electron-builder \
+ electronuserland/builder:wine
+```
+
+See [here](https://www.electron.build/multi-platform-build) for more information
+
