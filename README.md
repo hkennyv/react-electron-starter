@@ -61,6 +61,10 @@ If you wish to only build for a certain operating system, you can modify the `el
 
 You can set any combination of these flags (i.e. `-mw` will build for mac and windows only)
 
+### `yarn electron`
+
+Opens an electron application in development mode. Must have a development server already running using `yarn start`. You can change the location of the development server in `public/electron.js` if you'd like.
+
 ### `yarn eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**

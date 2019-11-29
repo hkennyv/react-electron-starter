@@ -1,10 +1,11 @@
 {
   "name": "react-electron-starter",
   "version": "0.1.0",
-  "main": "public/main.js",
+  "main": "public/electron.js",
   "homepage": "./",
   "private": true,
   "dependencies": {
+    "electron-is-dev": "^1.1.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
@@ -16,7 +17,8 @@
     "eject": "react-scripts eject",
     "postinstall": "./node_modules/.bin/electron-builder install-app-deps",
     "preelectron-pack": "yarn build",
-    "electron-pack": "./node_modules/.bin/electron-builder -mlw"
+    "electron-pack": "./node_modules/.bin/electron-builder -mlw",
+    "electron": "./node_modules/.bin/electron ."
   },
   "eslintConfig": {
     "extends": "react-app"

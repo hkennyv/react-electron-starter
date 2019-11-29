@@ -1,22 +1,23 @@
 const os = require("os");
 const path = require("path");
 const electron = require("electron");
+const isDev = require("electron-is-dev");
 
 const { app, BrowserWindow, ipcMain } = electron;
 
 let mainWindow;
 
-const URL =
-  process.env.NODE_ENV === "production"
-    ? `file://${path.join(__dirname, "./../build/index.html")}`
-    : "http://localhost:3000";
+const URL = isDev
+  ? "http://localhost:3000"
+  : `file://${path.join(__dirname, "./../build/index.html")}`;
 
 function createWindow() {
   mainWindow = new BrowserWindow({ height: 600, width: 800 });
   mainWindow.loadURL(URL);
   mainWindow.on("closed", () => app.quit());
 
-  if (process.env.NODE_ENV !== "production") {
+  if (isDev) {
+    console.log("development mode");
     mainWindow.webContents.openDevTools();
   }
 }
