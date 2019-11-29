@@ -1,8 +1,30 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# react-electron-starter
 
-## Available Scripts
+author(s): khuynh
 
-In the project directory, you can run:
+## Overview
+
+This is a template project for boostrapping create-react-app with electron. It aims to get an electron app up and running with just two commands. I'll try to keep the versions of cra/react/electron up to date as much as I can.
+
+## Usage
+
+All it takes to get a production ready electron app up and running is:
+
+```
+yarn install
+```
+
+to install all of your dependencies and
+
+```
+yarn electron-pack
+```
+
+to package the built react application into an electron app.
+
+Voila, you should have a working electron application built and ready for use in the `dist/` directory. Just make sure to adjust the `package.json` to ensure you are building for the correct platforms.
+
+## Scripts
 
 ### `yarn start`
 
@@ -26,6 +48,18 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn electron-pack`
+
+Builds the react application using `yarn build` and then builds the electron application. Currently, this script builds for Mac OSx Windows, and Linux. You can find the build artifacts in the `dist/` folder in the `dist/mac/` and `dist/win-unpacked` directories respdectively.
+
+If you wish to only build for a certain operating system, you can modify the `electron-pack` script in the `package.json` and add/remove the appropriate flags.
+
+- `-w` builds for windows
+- `-m` builds for mac
+- `-l` builds for linux
+
+You can set any combination of these flags (i.e. `-mw` will build for mac and windows only)
 
 ### `yarn eject`
 
@@ -66,21 +100,3 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-
-### TODO: Building for Windows (on Mac OS)
-You can build a windows executable using Docker if you can't build it on your machine.
-
-```
-docker run --rm -ti \
- --env-file <(env | grep -iE 'DEBUG|NODE_|ELECTRON_|YARN_|NPM_|CI|CIRCLE|TRAVIS_TAG|TRAVIS|TRAVIS_REPO_|TRAVIS_BUILD_|TRAVIS_BRANCH|TRAVIS_PULL_REQUEST_|APPVEYOR_|CSC_|GH_|GITHUB_|BT_|AWS_|STRIP|BUILD_') \
- --env ELECTRON_CACHE="/root/.cache/electron" \
- --env ELECTRON_BUILDER_CACHE="/root/.cache/electron-builder" \
- -v ${PWD}:/project \
- -v ${PWD##*/}-node-modules:/project/node_modules \
- -v ~/.cache/electron:/root/.cache/electron \
- -v ~/.cache/electron-builder:/root/.cache/electron-builder \
- electronuserland/builder:wine
-```
-
-See [here](https://www.electron.build/multi-platform-build) for more information
-

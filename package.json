@@ -16,7 +16,7 @@
     "eject": "react-scripts eject",
     "postinstall": "./node_modules/.bin/electron-builder install-app-deps",
     "preelectron-pack": "yarn build",
-    "electron-pack": "./node_modules/.bin/electron-builder -mw"
+    "electron-pack": "./node_modules/.bin/electron-builder -mlw"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "electron": "^7.1.0",
-    "electron-builder": "^22.1.0"
+    "electron-builder": "^22.2.0"
   },
   "author": {
     "name": "khuynh",
